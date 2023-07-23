@@ -1,4 +1,4 @@
-module github.com/aliworkshop/configlib
+module github.com/aliworkshop/configer
 
 go 1.18
 

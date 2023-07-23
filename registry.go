@@ -1,4 +1,4 @@
-package configlib
+package configer
 
 import (
 	"errors"

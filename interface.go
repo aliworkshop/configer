@@ -1,4 +1,4 @@
-package configlib
+package configer
 
 type Registry interface {
 	// get root config
