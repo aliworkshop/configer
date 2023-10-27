@@ -6,6 +6,7 @@ import (
 	"github.com/mitchellh/mapstructure"
 	"github.com/spf13/viper"
 	"io"
+	"time"
 )
 
 type configRegistry struct {
@@ -70,7 +71,7 @@ func (cr *configRegistry) Unmarshal(rawVal interface{}, opts ...interface{}) err
 	var input interface{} = settings
 	var options []viper.DecoderConfigOption
 	if opts != nil && len(opts) > 0 {
-		options := make([]viper.DecoderConfigOption, 0)
+		options = make([]viper.DecoderConfigOption, 0)
 		for _, opt := range opts {
 			options = append(options, opt.(viper.DecoderConfigOption))
 		}
@@ -90,6 +91,10 @@ func (cr *configRegistry) Unmarshal(rawVal interface{}, opts ...interface{}) err
 	}
 
 	return decoder.Decode(input)
+}
+
+func (cr *configRegistry) GetDuration(key string) time.Duration {
+	return cr.viper.GetDuration(key)
 }
 
 // defaultDecoderConfig returns default mapsstructure.DecoderConfig with suppot

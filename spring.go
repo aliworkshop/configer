@@ -115,3 +115,7 @@ func (s *spring) SetConfig(k string, v interface{}) {
 	s.root.SetDefault(k, v)
 	s.viper.SetDefault(k, v)
 }
+
+func (s *spring) GetDuration(key string) time.Duration {
+	return s.viper.GetDuration(key)
+}

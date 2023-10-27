@@ -1,5 +1,7 @@
 package configer
 
+import "time"
+
 type Registry interface {
 	// get root config
 	Root() Registry
@@ -9,4 +11,5 @@ type Registry interface {
 	SetConfigType(in string)
 	ReadConfig(opts ...interface{}) error
 	Unmarshal(rawVal interface{}, opts ...interface{}) error
+	GetDuration(key string) time.Duration
 }
